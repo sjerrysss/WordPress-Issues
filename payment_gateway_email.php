@@ -137,7 +137,7 @@ function initialize_gateway_class()
 
 function add_line_id_order_meta($order_id)
 {
-    if (empty($_POST['line-id'])) {
+    if (!empty($_POST['line-id'])) {
         update_post_meta($order_id, 'line id', $_POST['line-id']);
     }
 }
