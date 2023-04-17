@@ -1,0 +1,21 @@
+<?php
+
+/**
+* register fields Validating.
+*/
+function wooc_validate_extra_register_fields( $errors, $username, $email ) {
+    if ( isset( $_POST['billing_first_name'] ) && empty( $_POST['billing_first_name'] ) ) {
+        $errors->add( 'billing_first_name_error', __( '<strong>Error</strong>: First name is required!', 'woocommerce' ) );
+    }
+
+    if ( isset( $_POST['billing_last_name'] ) && empty( $_POST['billing_last_name'] ) ) {
+        $errors->add( 'billing_last_name_error', __( '<strong>Error</strong>: Last name is required!.', 'woocommerce' ) );
+    }
+    if ( isset( $_POST['billing_phone'] ) && empty( $_POST['billing_phone'] ) ) {
+        $errors->add( 'billing_phone_error', __( '<strong>Error</strong>: Phone is required!.', 'woocommerce' ) );
+    }
+
+    return $errors;
+}
+
+add_filter( 'woocommerce_registration_errors', 'wooc_validate_extra_register_fields', 10, 3 );
